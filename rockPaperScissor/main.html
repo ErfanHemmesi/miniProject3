@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rockPaperScissor</title>  
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- محل اصلی باکس ها -->
+    <div id="bigBox">
+
+        <!--start smallBox1 -->
+        <div class="smallBox1">
+            <h2>choose your weapon</h2>
+            <div id="userWeapon">
+                <img  class="items"src="image/scissor.png" alt="" >
+                <img class="items" src="image/rock.png" alt="" >
+                <img class="items" src="image/paper.png" width="254" height="259" alt="" >
+            </div>
+            <div id="cpuWeapon">
+                <h2>cpu choosed:</h2>
+                <img src="image/scissor.png" class="weapon hidden">
+                <img src="image/rock.png" class="weapon hidden">
+                <img src="image/paper.png" class="weapon hidden" width="254" height="259">
+            </div>
+        </div>
+        <!-- end smallBox1 -->
+
+        <!-- start smallBox2 -->
+        <div class="smallBox2">
+            <h2>points:</h2>
+            
+            <div id="scors">
+                <div id="scoore1">
+                    <h2>User:</h2>
+                    <h2>0</h2>
+                </div>
+                <div id="scoore2">
+                    <h2>cpu:</h2>
+                    <h2>0</h2>
+                </div>
+            </div>
+        </div>
+        <button id="resetBut" type="reset">Reset</button>
+    </div>
+    <script src="java.js"></script>
+</body>
+</html>

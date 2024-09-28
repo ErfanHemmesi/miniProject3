@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tasGame</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header id="bigBox">
+    </header>
+    <main id="mainBox">
+        <div class="leftBox">
+            <container class="boxStyle" >
+                <!-- p1=player1 -->
+                <h2 id="totalScore-p1">Total Score</h2>
+                <h1>player1</h1>
+                <h2 id="scorePlayer-1">0</h2>
+            </container>
+            <container class="boxStyle" >
+                <h2>currentScore</h2>
+                <h2 id="currentScore-p1">0</h2>
+            </container>
+        </div>
+        <div id="beetBox">
+            <button class="mainBoxBut" id="startGame" type="button">startGame</button>
+            <img  class="tas hidden"src="images/1.png" id="tas1">
+            <button class="mainBoxBut" id="RollDice" >RollDice</button>
+            <button class="mainBoxBut" id="Hold" type="button">Hold</button>
+        </div>
+        <div class="rightBox ">
+            <container class="boxStyle" >
+                <h2 id="totalScore-p2">Total Score</h2>
+                <h1>player2</h1>
+                <h2 id="scorePlayer-2">0</h2>
+            </container>
+            <container class="boxStyle" >
+                    <h2>currentScore</h2>
+                    <h2 id="currentScore-p2">0</h2>
+            </container>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="java.js"></script>
+    <script src="fortest.js"></script>
+</body>
+</html>

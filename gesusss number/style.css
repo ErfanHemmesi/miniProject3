@@ -1,0 +1,75 @@
+/* body{
+    background-color: gray;
+    font-size: 20px;
+}
+#bigBox{
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 3em;
+
+}
+.getAndTest{
+    display: flex;
+    flex-direction: row;    
+}
+
+#buttonArea{
+    margin-left: 0.5em ;
+    text-align: center;
+    padding: 0px 2em;
+    border-radius: 1rem;
+    border: 1px black solid;
+} */
+
+body{
+    font-size: 20px;    
+}
+#bigBox{
+    background-color: aqua;
+    display:grid;
+    grid-template-columns: repeat(12,1fr);
+    font-size: 3rem;
+
+}
+.smallBox1{
+    grid-column: 1/9;
+    background-color: gray;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#cpuWeapon > h2{
+    text-align: center;
+    font-size: 4rem;
+}
+
+/* smallBox2 */
+.smallBox2{
+    margin: 1rem;
+    background-color: gray;
+    grid-column: 9/-1;
+    text-align: center;
+}
+
+#scors{
+    justify-content: space-around ;
+    display: flex;
+    flex-direction: row;
+}
+
+#bigBox > button{
+    background-color: green;
+    color: aliceblue;
+    grid-column: 1/3;
+    height: 4rem;
+    font-size: 3rem;
+    border-radius: 10%;
+}
+
+/* hidden*/
+.hidden{
+    display:none;
+}
