@@ -1,31 +1,51 @@
-// varieables
-    let tac = document.querySelectorAll('.tas'); 
-    // player1
-        let Player1 = document.querySelector('#scorePlayer-1');
-        let currentP1 = document.querySelector('#currentScore-p1');
-        // player1caculate
-            let scorePlayer1 = Number(Player1.innerHTML);
-            let currentScoreP1 = Number(currentP1.innerHTML);
-    // player2
-        let Player2 = document.querySelector('#scorePlayer-2');
-        let currentP2 = document.querySelector('#currentScore-p2');
-            //player2caculate
-                let scorePlayer2 = Number(Player2.innerHTML);
-                let currentScoreP2 = Number(currentP2.innerHTML);
-    //backgroundForPlayersTurn
-        let backgroundLeft = document.querySelector('.leftBox')
-        let backgroundRight = document.querySelector('.rightBox');
-        
+let elements = {
+    tac: document.querySelectorAll('.tas'),
+    player1: {
+      Player1: document.querySelector('#scorePlayer-1'),
+      currentP1: document.querySelector('#currentScore-p1'),
+      scorePlayer1: Number(document.querySelector('#scorePlayer-1').innerHTML),
+      currentScoreP1: Number(document.querySelector('#currentScore-p1').innerHTML)
+    },
+    player2: {
+      Player2: document.querySelector('#scorePlayer-2'),
+      currentP2: document.querySelector('#currentScore-p2'),
+      scorePlayer2: Number(document.querySelector('#scorePlayer-2').innerHTML),
+      currentScoreP2: Number(document.querySelector('#currentScore-p2').innerHTML)
+    },
+    backGrounds: {
+      backgroundLeft: document.querySelector('.leftBox'),
+      backgroundRight: document.querySelector('.rightBox')
+    }
+  };
+  
+   // دسترسی به scorePlayer1 یا scorePlayer2 به صورت دینامیک
+  
 //globalVariable
 let turn = 0;
 let i = 1 ;
-console.log('i='+i)
+console.log('i out of if='+i)
+
+//functionBackGroundTurn
+function backGround(i){
+    if(i==1) {
+        backGround1 = elements['backGrounds']['backgroundRight']
+        backGround2 = elements['backGrounds']['backgroundLeft']
+    } else {
+        backGround1 =  elements['backGrounds']['backgroundLeft']
+        backGround2 = elements['backGrounds']['backgroundRight']
+    }
+    
+    backGround1.classList.remove('active');
+    backGround2.classList.add('active');
+}
+
+
 
 document.getElementsByClassName('mainBoxBut')[1].addEventListener('click', () => {   
     const randome = Math.floor((Math.random()*6)+1);
     // console.log(randome);
-    tac[0].classList.remove('hidden');
-    tac[0].src=`images/${randome}.png`;
+    elements['tac'][0].classList.remove('hidden');
+    elements['tac'][0].src=`images/${randome}.png`;
     
     if (randome==1){
         turn+=1;
@@ -33,37 +53,17 @@ document.getElementsByClassName('mainBoxBut')[1].addEventListener('click', () =>
         i = (turn%2)+1 ;
         console.log('i in if = '+i)
         
-        if (i==1) {
-            backGround1 = backgroundRight
-            backGround2 = backgroundLeft
-        } else {
-            backGround1 =  backgroundLeft
-            backGround2 = backgroundRight
-        }
-        
-        backGround1.classList.remove('active');
-        backGround2.classList.add('active');
-
-        // (i === 1) ? (backGround1 = backgroundRight, backGround2 = backgroundLeft) :
-        //  (backGround1 = backgroundLeft, backGround2 = backgroundRight);
-        // backGround1.classList.remove('active');
-        // backGround2.classList.add('active');    
+        backGround(i);   
     }else{
         // TODO: باید وقتی جا به جا شد امتیاز هایی ک هولد نشد 0 شود
-        if( i===1 ){
-            backgroundRight.classList.remove('active');
-            backgroundLeft.classList.add('active');
-            currentScoreP1 = caculate(currentScoreP1,randome);
-            console.log('currentScoreP1 ='+currentScoreP1)
-            currentP1.innerHTML =currentScoreP1
-        }else if(i === 2 ){
-            backgroundLeft.classList.remove('active');
-            backgroundRight.classList.add('active');
-            currentScoreP2 = caculate(currentScoreP2,randome)
-            console.log('currentScoreP2 ='+currentScoreP2)
-            currentP2.innerHTML = currentScoreP2
-        }
-        console.log('i in last loop = '+ i)
+        backGround(i)
+        // caculate(i,randome)
+        currentScore = elements[`player${i}`][`currentScoreP${i}`];
+        console.log(currentScore);
+        current = elements[`player${i}`][`currentP${i}`];
+        elements[`player${i}`][`currentScoreP${i}`] = Number(currentScore)+randome;
+        console.log(currentScore);
+        current.innerHTML = elements[`player${i}`][`currentScoreP${i}`];
         
     }
     
