@@ -39,7 +39,11 @@ function backGround(i){
     backGround2.classList.add('active');
 }
 
-
+//caculate function
+function caculate(scorePlayerX,random){
+    scorePlayerX =scorePlayerX + Number(random);
+    return scorePlayerX;
+}
 
 document.getElementsByClassName('mainBoxBut')[1].addEventListener('click', () => {   
     const randome = Math.floor((Math.random()*6)+1);
@@ -48,6 +52,10 @@ document.getElementsByClassName('mainBoxBut')[1].addEventListener('click', () =>
     elements['tac'][0].src=`images/${randome}.png`;
     
     if (randome==1){
+        if (elements[`player${i}`][`currentScoreP${i}`]!==0){
+            elements[`player${i}`][`currentScoreP${i}`] = 0;
+            elements[`player${i}`][`currentP${i}`].innerHTML =0;
+        }
         turn+=1;
         console.log('turn = '+turn);
         i = (turn%2)+1 ;
@@ -55,27 +63,21 @@ document.getElementsByClassName('mainBoxBut')[1].addEventListener('click', () =>
         
         backGround(i);   
     }else{
-        // TODO: باید وقتی جا به جا شد امتیاز هایی ک هولد نشد 0 شود
         backGround(i)
-        // caculate(i,randome)
         currentScore = elements[`player${i}`][`currentScoreP${i}`];
         console.log(currentScore);
         current = elements[`player${i}`][`currentP${i}`];
-        elements[`player${i}`][`currentScoreP${i}`] = Number(currentScore)+randome;
+        elements[`player${i}`][`currentScoreP${i}`] = caculate(Number(currentScore),randome);
         console.log(currentScore);
         current.innerHTML = elements[`player${i}`][`currentScoreP${i}`];
         
-    }
-    
-    
+    }    
 });
 
-function caculate(scorePlayerX,random){
-    scorePlayerX =scorePlayerX + Number(random);
-    return scorePlayerX;
-}
-// document.getElementsByClassName('mainBoxBut')[1].addEventListener('click', () => {   
-//     tac[randome].classList.add('visiablee');
-//     tac[randome].style.display = 'none';
+document.getElementById('Hold').addEventListener('click',()=>{
+    elements[`player${i}`][`scorePlayer${i}`]= elements[`player${i}`][`scorePlayer${i}`] + elements[`player${i}`][`currentScoreP${i}`];
+    elements[`player${i}`][`Player${i}`] .innerHTML= elements[`player${i}`][`scorePlayer${i}`];
+    elements[`player${i}`][`currentScoreP${i}`] = 0;
+    elements[`player${i}`][`currentP${i}`].innerHTML =0;
 
-// });
+})
