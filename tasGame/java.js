@@ -45,6 +45,7 @@ function caculate(scorePlayerX,random){
     return scorePlayerX;
 }
 
+
 document.getElementsByClassName('mainBoxBut')[1].addEventListener('click', () => {   
     const randome = Math.floor((Math.random()*6)+1);
     // console.log(randome);
@@ -79,5 +80,10 @@ document.getElementById('Hold').addEventListener('click',()=>{
     elements[`player${i}`][`Player${i}`] .innerHTML= elements[`player${i}`][`scorePlayer${i}`];
     elements[`player${i}`][`currentScoreP${i}`] = 0;
     elements[`player${i}`][`currentP${i}`].innerHTML =0;
-
+    turn+=1;
+    console.log('turn = '+turn);
+    i = (turn%2)+1 ;
+    console.log('i in if = '+i)
+        
+    backGround(i);
 })
